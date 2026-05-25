@@ -1,0 +1,2 @@
+# The demo script only uses Python standard library.
+# Add model SDKs here when connecting to real APIs.

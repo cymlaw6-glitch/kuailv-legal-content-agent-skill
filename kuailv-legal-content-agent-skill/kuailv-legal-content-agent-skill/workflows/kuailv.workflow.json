@@ -1,0 +1,93 @@
+{
+  "name": "kuailv-legal-content-agent-workflow",
+  "description": "快律法律内容生产与合规审查多 Agent 工作流",
+  "version": "0.1.0",
+  "nodes": [
+    {
+      "id": "input",
+      "type": "input",
+      "name": "用户输入法律材料"
+    },
+    {
+      "id": "parser",
+      "type": "agent",
+      "name": "输入解析 Agent",
+      "output": "structured_case"
+    },
+    {
+      "id": "rag_research",
+      "type": "agent",
+      "name": "RAG 法律研究 Agent",
+      "output": "legal_basis"
+    },
+    {
+      "id": "legal_reasoning",
+      "type": "agent",
+      "name": "法律推理 Agent",
+      "output": "legal_analysis"
+    },
+    {
+      "id": "translation",
+      "type": "agent",
+      "name": "内容转译 Agent",
+      "output": "plain_language_analysis"
+    },
+    {
+      "id": "creator",
+      "type": "agent",
+      "name": "短视频创作 Agent",
+      "output": "content_pack"
+    },
+    {
+      "id": "compliance",
+      "type": "agent",
+      "name": "合规审查 Agent",
+      "output": "risk_review"
+    },
+    {
+      "id": "evaluator",
+      "type": "agent",
+      "name": "质量评估 Agent",
+      "output": "quality_score"
+    },
+    {
+      "id": "output",
+      "type": "output",
+      "name": "最终内容包"
+    }
+  ],
+  "edges": [
+    [
+      "input",
+      "parser"
+    ],
+    [
+      "parser",
+      "rag_research"
+    ],
+    [
+      "rag_research",
+      "legal_reasoning"
+    ],
+    [
+      "legal_reasoning",
+      "translation"
+    ],
+    [
+      "translation",
+      "creator"
+    ],
+    [
+      "creator",
+      "compliance"
+    ],
+    [
+      "compliance",
+      "evaluator"
+    ],
+    [
+      "evaluator",
+      "output"
+    ]
+  ]
+}
